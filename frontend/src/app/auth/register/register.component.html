@@ -1,0 +1,91 @@
+<ng-container *ngFor="let error of errors?.error?.non_field_errors">
+    <div class="alert alert-dark alert-dismissible fade show" role="alert">
+        <strong> <i class="ion-android-sad"></i> </strong> {{error}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</ng-container>
+
+<div *ngIf="!isLogged">
+    <h4>Tela de Registro</h4>
+    <form (keyup.enter)="registrar()" [formGroup]="form" (ngSubmit)="registrar()">
+
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Usuário</label>
+                    <input autocomplete="off" formControlName="username" type="text" required class="form-control"
+                        placeholder="Nome de usuário">
+                    <app-campo-error [mostraError]="verificaValidTouched('username')"
+                        msgError="Campo Obrigatório Minimo 3 Caracteres">
+                    </app-campo-error>
+                    <ng-container *ngFor="let error of errors?.error?.username">
+                        <app-campo-error [mostraError]="true" [msgError]="error">
+                        </app-campo-error>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Sobrenome</label>
+                    <input autocomplete="off" formControlName="last_name" type="text" required class="form-control"
+                        placeholder="Sobrenome">
+                    <app-campo-error [mostraError]="verificaValidTouched('last_name')"
+                        msgError="Campo Obrigatório Minimo 3 Caracteres">
+                    </app-campo-error>
+                    <ng-container *ngFor="let error of errors?.error?.last_name">
+                        <app-campo-error [mostraError]="true" [msgError]="error">
+                        </app-campo-error>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input autocomplete="off" formControlName="email" type="email" required class="form-control"
+                placeholder="Email">
+            <app-campo-error [mostraError]="verificaValidTouched('email')" msgError="Campo Obrigatorio">
+            </app-campo-error>
+            <ng-container *ngFor="let error of errors?.error?.email">
+                <app-campo-error [mostraError]="true" [msgError]="error">
+                </app-campo-error>
+            </ng-container>
+        </div>
+
+        <div class="form-group">
+            <label>Senha</label>
+            <input autocomplete="off" formControlName="password" type="password" required class="form-control"
+                placeholder="Senha">
+            <app-campo-error [mostraError]="verificaValidTouched('password')" msgError="Campo obrigatorio">
+            </app-campo-error>
+            <ng-container *ngFor="let error of errors?.error?.password">
+                <app-campo-error [mostraError]="true" [msgError]="error">
+                </app-campo-error>
+            </ng-container>
+        </div>
+
+
+        <button *ngIf="loading" class="btn btn-dark mr-1" type="submit" [disabled]="loading">
+            <ng-container *ngIf="loading">
+                <span class=" spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            </ng-container>
+            Carregando
+        </button>
+
+        <button *ngIf="!loading" class="btn btn-dark mr-1" type="submit">
+            Registrar
+        </button>
+        <a routerLink="" class="btn btn-dark">Voltar</a>
+    </form>
+</div>
+
+<div *ngIf="isLogged">
+    <div class="text-center">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        <h1>Direcionando...</h1>
+    </div>
+</div>

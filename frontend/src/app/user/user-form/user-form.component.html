@@ -1,0 +1,98 @@
+<div class="d-flex align-items-center">
+    <h2 class="mr-3"><a routerLink="/user"><i class="ion-ios-arrow-back text-dark mr-3"></i></a></h2>
+    <h4> {{textHeader}} Usuário</h4>
+
+</div>
+<div *ngIf="isSuccess" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong> <i class="ion-android-happy"></i> </strong> Dados Salvos com successo.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div *ngIf="loading" class="d-flex align-items-center">
+    <strong>Carregando...</strong>
+    <div class="spinner-border ml-auto" role="status" aria-hidden="true"></div>
+</div>
+<br>
+
+<div *ngIf="!loading">
+    <form [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="row">
+            <div class="col">
+                <div class="form-group">
+                    <label>Usuário</label>
+                    <input autocomplete="off" formControlName="username" type="text" required class="form-control"
+                        placeholder="Nome de usuário">
+                    <app-campo-error [mostraError]="verificaValidTouched('username')"
+                        msgError="Campo Obrigatório Minimo 3 Caracteres">
+                    </app-campo-error>
+                    <ng-container *ngFor="let error of errors?.error?.username">
+                        <app-campo-error [mostraError]="true" [msgError]="error">
+                        </app-campo-error>
+                    </ng-container>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-group">
+                    <label>Sobrenome</label>
+                    <input autocomplete="off" formControlName="last_name" type="text" required class="form-control"
+                        placeholder="Sobrenome">
+                    <app-campo-error [mostraError]="verificaValidTouched('last_name')"
+                        msgError="Campo Obrigatório Minimo 3 Caracteres">
+                    </app-campo-error>
+                    <ng-container *ngFor="let error of errors?.error?.last_name">
+                        <app-campo-error [mostraError]="true" [msgError]="error">
+                        </app-campo-error>
+                    </ng-container>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Email</label>
+            <input autocomplete="off" formControlName="email" type="email" required class="form-control"
+                placeholder="Email">
+            <app-campo-error [mostraError]="verificaValidTouched('email')" msgError="Insira um email Válido">
+            </app-campo-error>
+            <ng-container *ngFor="let error of errors?.error?.email">
+                <app-campo-error [mostraError]="true" [msgError]="error">
+                </app-campo-error>
+            </ng-container>
+        </div>
+
+        <div class="form-group">
+            <label>Senha</label>
+            <input autocomplete="off" formControlName="password" type="password" class="form-control"
+                placeholder="Senha">
+            <app-campo-error [mostraError]="verificaValidTouched('password')" msgError="Minimo 3 Caracteres">
+            </app-campo-error>
+            <ng-container *ngFor="let error of errors?.error?.password">
+                <app-campo-error [mostraError]="true" [msgError]="error">
+                </app-campo-error>
+            </ng-container>
+
+        </div>
+
+
+
+        <button *ngIf="loadingSend" class="btn btn-dark mr-1" type="submit" [disabled]="loadingSend">
+            <ng-container *ngIf="loadingSend">
+                <span class=" spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+            </ng-container>
+            Carregando
+        </button>
+
+        <button *ngIf="!loadingSend" class="btn btn-dark mr-1" type="submit">
+            {{textHeader}}
+        </button>
+
+
+
+    </form>
+    <div *ngIf="errors" class="text-center">
+        <h1 style="font-size: 60px;"> <i class="ion-android-sad"></i></h1>
+        <h5>Ocorreu um error</h5>
+        <p>{{errors?.statusText}}</p>
+    </div>
+</div>
