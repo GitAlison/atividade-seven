@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { Token } from '../models/token.model';
+import { Token } from '../../models/token.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  api: string = environment.api_auth;
+  api: string = environment.apiAuth;
 
   constructor(private http: HttpClient) { }
 

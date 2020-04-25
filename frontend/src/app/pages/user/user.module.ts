@@ -5,9 +5,9 @@ import { UserFormComponent } from './user-form/user-form.component';
 import { UserRoutingModule } from './user-routing.module';
 import { UserComponent } from './user.component';
 import { UserService } from './user.service';
-import { SharedComponentsModule } from '../shared-components/shared-components.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { SharedComponentsModule } from 'src/app/shared-components/shared-components.module';
 
 
 

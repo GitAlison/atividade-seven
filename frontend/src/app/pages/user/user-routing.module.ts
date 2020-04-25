@@ -3,8 +3,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { UserListComponent } from './user-list/user-list.component';
 import { UserComponent } from './user.component';
 import { UserFormComponent } from './user-form/user-form.component';
-import { UserGuard } from '../guards/user.guard';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { UserGuard } from 'src/app/guards/user.guard';
 
 
 const routes: Routes = [

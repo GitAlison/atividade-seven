@@ -6,7 +6,7 @@ import { AuthComponent } from './auth.component';
 import { AuthRoutingModule } from './auth-routing.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AccountService } from './account.service';
-import { SharedComponentsModule } from '../shared-components/shared-components.module';
+import { SharedComponentsModule } from '../../shared-components/shared-components.module';
 
 
 

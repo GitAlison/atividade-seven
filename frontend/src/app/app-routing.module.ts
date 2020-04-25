@@ -6,13 +6,13 @@ import { UserGuard } from './guards/user.guard';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+    loadChildren: () => import('./pages/auth/auth.module').then(m => m.AuthModule)
   },
   {
     path: 'user',
     canActivate: [UserGuard],
     canLoad: [UserGuard],
-    loadChildren: () => import('./user/user.module').then(m => m.UserModule)
+    loadChildren: () => import('./pages/user/user.module').then(m => m.UserModule)
   },
   { path: '**', redirectTo: '' }
 ];
