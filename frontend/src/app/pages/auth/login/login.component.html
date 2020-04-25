@@ -9,7 +9,7 @@
 
 <div *ngIf="!isLogged">
     <h4>Tela de Login</h4>
-    <form (keyup.enter)="logar()" [formGroup]="form" (ngSubmit)="logar()">
+    <form [formGroup]="form" (ngSubmit)="logar()">
         <div class="form-group">
             <label>Usuário</label>
             <input autofocus autocomplete="off" formControlName="username" type="text" required class="form-control"
@@ -23,8 +23,7 @@
             <label>Senha</label>
             <input autocomplete="off" formControlName="password" type="password" required class="form-control"
                 placeholder="Senha">
-            <app-campo-error [mostraError]="verificaValidTouched('password')"
-                msgError="Campo Obrigatório">
+            <app-campo-error [mostraError]="verificaValidTouched('password')" msgError="Campo Obrigatório">
             </app-campo-error>
         </div>
 

@@ -9,7 +9,7 @@
 
 <div *ngIf="!isLogged">
     <h4>Tela de Registro</h4>
-    <form (keyup.enter)="registrar()" [formGroup]="form" (ngSubmit)="registrar()">
+    <form [formGroup]="form" (ngSubmit)="registrar()">
 
         <div class="row">
             <div class="col">
