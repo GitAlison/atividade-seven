@@ -4,6 +4,7 @@ from rest_framework.permissions import AllowAny
 from rest_framework.response import Response
 from ..usuarios.serializers import SerializerUserCreateUpdate
 from account.models import User
+from rest_framework import status
 
 
 def create_jwt(user):
@@ -30,4 +31,4 @@ class CreateUser(CreateAPIView):
             return Response(token)
 
         else:
-            return Response(serializer.errors)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
